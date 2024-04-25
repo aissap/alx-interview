@@ -8,12 +8,19 @@ def pascal_triangle(n):
     if n <= 0:
         return triangle
 
-    for i in range(n):
-        row = [1] 
-        for j in range(1, i + 1):
-            coefficient = triangle[i - 1][j - 1] if j < len(triangle[i - 1]) else 0
-            coefficient += triangle[i - 1][j] if j < len(triangle[i - 1]) else 0
+    i = 0
+    while i < n:
+        row = [1]
+        for j in range(1, i):
+            if j < len(triangle[i - 1]):
+                coefficient = triangle[i - 1][j - 1]
+            else:
+                coefficient = 0
+            if j < len(triangle[i - 1]):
+                coefficient += triangle[i - 1][j]
             row.append(coefficient)
+        row.append(1)
         triangle.append(row)
+        i += 1
 
     return triangle
