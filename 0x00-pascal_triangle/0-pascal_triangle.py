@@ -10,17 +10,8 @@ def pascal_triangle(n):
 
 	triangle.append([1])
 
-	for i in range(1, n):
-		row = [1]
-
-		for j in range(1, i):
-			prev_row_len = len(triangle[i - 1])
-			prev_left = triangle[i - 1][j - 1] if j - 1 < prev_row_len else 0
-			prev_right = triangle[i - 1][j] if j < prev_row_len else 0
-			row.append(prev_left + prev_right)	
-
-		row.append(1)
-
-		triangle.append(row)
+	for i in range(n - 1):
+		triangle.append([1] + [triangle[i][a] + triangle[i][a + 1]
+				for a in range(len(triangle[i]) - 1)] + [1])
 
 	return triangle
