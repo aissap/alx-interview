@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+'''Code that returns pascal triangle'''
+
+
 def pascal_triangle(n):
 """Generate Pascal's Triangle up to the nth row.
 Args:
