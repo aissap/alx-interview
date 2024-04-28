@@ -1,12 +1,11 @@
 #!/usr/bin/python3
 def pascal_triangle(n):
-	"""
-	Generate Pascal's Triangle up to the nth row.
-	Args:
-	n (int): The number of rows of the triangle to generate.
-	Returns:
-	list of lists: List of lists of integers
-	"""
+"""Generate Pascal's Triangle up to the nth row.
+Args:
+n (int): The number of rows of the triangle to generate.
+Returns:
+list of lists: List of lists of integers
+"""
 	triangle = []
 
 	if n <= 0:
