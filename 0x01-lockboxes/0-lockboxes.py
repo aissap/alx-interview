@@ -11,21 +11,16 @@ def canUnlockAll(boxes):
     Returns:
         bool: True if all boxes can be opened, False otherwise.
     """
-    if not isinstance(boxes, list) or not all(isinstance(box, list) for box in boxes):
-        return False
-
     num_boxes = len(boxes)
-    if num_boxes == 0:
-        return False
+    visited = set()
+    visited.add(0)
+    box_queue = [0]
 
-    visited_boxes = set([0])
-    unvisited_boxes = set(boxes[0]).difference(set([0]))
+    while box_queue:
+        current_box = box_queue.pop(0)
+        for key in boxes[current_box]:
+            if key < num_boxes and key not in visited:
+                visited.add(key)
+                box_queue.append(key)
 
-    while unvisited_boxes:
-        current_box = unvisited_boxes.pop()
-        if not 0 <= current_box < num_boxes:
-            continue
-        visited_boxes.add(current_box)
-        unvisited_boxes = unvisited_boxes.union(set(boxes[current_box]).difference(visited_boxes))
-
-    return len(visited_boxes) == num_boxes
+    return len(visited) == num_boxes
