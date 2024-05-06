@@ -19,7 +19,7 @@ def canUnlockAll(boxes):
         return False
 
     visited_boxes = set([0])
-    box_queue = [0]  # Queue for BFS traversal
+    box_queue = [0]
 
     while box_queue:
         current_box = box_queue.pop(0)
