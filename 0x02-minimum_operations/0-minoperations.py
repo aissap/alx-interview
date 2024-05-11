@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+""" Minimum Operations """
+
+
 def minOperations(n):
     """
     Calculate the minimum number of operations needed to achieve 'n' characters
