@@ -15,6 +15,7 @@ status_codes = {"200": 0,
                 "500": 0}
 line_count = 0
 
+
 def print_stats():
     """
     Print accumulated metrics.
@@ -26,6 +27,7 @@ def print_stats():
     for code in sorted(status_codes.keys()):
         if status_codes[code] > 0:
             print("{}: {}".format(code, status_codes[code]))
+
 
 def signal_handler(sig, frame):
     """
@@ -39,7 +41,9 @@ def signal_handler(sig, frame):
     print_stats()
     sys.exit(0)
 
+
 signal.signal(signal.SIGINT, signal_handler)
+
 
 try:
     for line in sys.stdin:
