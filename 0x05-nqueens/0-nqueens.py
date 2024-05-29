@@ -89,6 +89,6 @@ def solve_n_queens(n):
         print([[row, col] for row, col in solution])
 
 
-# if __name__ == "__main__":
-n = validate_input()
-solve_n_queens(n)
+if __name__ == "__main__":
+    n = validate_input()
+    solve_n_queens(n)
