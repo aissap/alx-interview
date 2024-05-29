@@ -90,5 +90,5 @@ def solve_n_queens(n):
 
 
 # if __name__ == "__main__":
-#     n = validate_input()
-solve_n_queens()
+n = validate_input()
+solve_n_queens(n)
