@@ -4,49 +4,48 @@ Prime Game module
 """
 
 
-def is_prime(n):
-    """Check if a number is prime"""
-    if n <= 1:
-        return False
-    if n <= 3:
-        return True
-    if n % 2 == 0 or n % 3 == 0:
-        return False
-    i = 5
-    while i * i <= n:
-        if n % i == 0 or n % (i + 2) == 0:
-            return False
-        i += 6
-    return True
-
-
-def get_primes_up_to(n):
-    """Get all prime numbers up to n"""
-    primes = []
-    for i in range(2, n + 1):
-        if is_prime(i):
-            primes.append(i)
+def sieve_of_eratosthenes(n):
+    """Generate a list of prime numbers up to n"""
+    is_prime = [True] * (n + 1)
+    p = 2
+    while p * p <= n:
+        if is_prime[p]:
+            for i in range(p * p, n + 1, p):
+                is_prime[i] = False
+        p += 1
+    primes = [p for p in range(2, n + 1) if is_prime[p]]
     return primes
 
 
+def count_prime_moves(n, primes):
+    """The number of for a given n"""
+    available = [True] * (n + 1)
+    moves = 0
+
+    for prime in primes:
+        if prime > n:
+            break
+        if available[prime]:
+            moves += 1
+            for multiple in range(prime, n + 1, prime):
+                available[multiple] = False
+
+    return moves
+
+
 def isWinner(x, nums):
-    """Determine the winner."""
+    """Determine the winner of the prime game"""
     if x <= 0 or not nums:
         return None
+
+    max_n = max(nums)
+    primes = sieve_of_eratosthenes(max_n)
 
     maria_wins = 0
     ben_wins = 0
 
     for n in nums:
-        primes = get_primes_up_to(n)
-        moves = 0
-
-        while primes:
-            prime = primes.pop(0)
-            multiples = [i for i in primes if i % prime == 0]
-            primes = [i for i in primes if i % prime != 0]
-            moves += 1
-
+        moves = count_prime_moves(n, primes)
         if moves % 2 == 1:
             maria_wins += 1
         else:
