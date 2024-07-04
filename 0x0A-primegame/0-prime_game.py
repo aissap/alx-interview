@@ -3,6 +3,7 @@
 Prime Game module
 """
 
+
 def is_prime(n):
     """Check if a number is prime"""
     if n <= 1:
@@ -18,6 +19,7 @@ def is_prime(n):
         i += 6
     return True
 
+
 def get_primes_up_to(n):
     """Get all prime numbers up to n"""
     primes = []
@@ -25,6 +27,7 @@ def get_primes_up_to(n):
         if is_prime(i):
             primes.append(i)
     return primes
+
 
 def isWinner(x, nums):
     """Determine the winner."""
